@@ -1,0 +1,2 @@
+注意编译环境devc++
+图形库：ege:http://xege.org/

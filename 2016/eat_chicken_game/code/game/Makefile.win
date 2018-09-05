@@ -1,0 +1,40 @@
+# Project: game_snake
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = Snake.o Position.o MapCavel.o main.o Control.o
+LINKOBJ  = Snake.o Position.o MapCavel.o main.o Control.o
+LIBS     = -L"F:/Software/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -L"F:/Software/Dev-Cpp/MinGW64/lib" -lgraphics -lgdi32 -limm32 -lmsimg32 -lole32 -loleaut32 -lwinmm -luuid -m32
+INCS     = -I"F:/Software/Dev-Cpp/MinGW64/include" -I"F:/Software/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/Software/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"F:/Software/Dev-Cpp/MinGW64/include" -I"F:/Software/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/Software/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"F:/Software/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = game_snake.exe
+CXXFLAGS = $(CXXINCS) -ansi -traditional-cpp -m32
+CFLAGS   = $(INCS) -ansi -traditional-cpp -m32
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+Snake.o: Snake.cpp
+	$(CPP) -c Snake.cpp -o Snake.o $(CXXFLAGS)
+
+Position.o: Position.cpp
+	$(CPP) -c Position.cpp -o Position.o $(CXXFLAGS)
+
+MapCavel.o: MapCavel.cpp
+	$(CPP) -c MapCavel.cpp -o MapCavel.o $(CXXFLAGS)
+
+main.o: main.cpp
+	$(CPP) -c main.cpp -o main.o $(CXXFLAGS)
+
+Control.o: Control.cpp
+	$(CPP) -c Control.cpp -o Control.o $(CXXFLAGS)

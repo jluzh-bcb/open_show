@@ -1,0 +1,33 @@
+# Project: game_logo
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+RES      = geme_logo_private.res
+OBJ      = game_logo_main.o $(RES)
+LINKOBJ  = game_logo_main.o $(RES)
+LIBS     = -L"F:/Software/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -L"F:/Software/Dev-Cpp/MinGW64/lib" -lgraphics -lgdi32 -limm32 -lmsimg32 -lole32 -loleaut32 -lwinmm -luuid -mwindows -m32
+INCS     = -I"F:/Software/Dev-Cpp/MinGW64/include" -I"F:/Software/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/Software/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"F:/Software/Dev-Cpp/MinGW64/include" -I"F:/Software/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"F:/Software/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"F:/Software/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = geme_logo.exe
+CXXFLAGS = $(CXXINCS) -m32
+CFLAGS   = $(INCS) -m32
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+game_logo_main.o: game_logo_main.cpp
+	$(CPP) -c game_logo_main.cpp -o game_logo_main.o $(CXXFLAGS)
+
+geme_logo_private.res: geme_logo_private.rc 
+	$(WINDRES) -i geme_logo_private.rc -F pe-i386 --input-format=rc -o geme_logo_private.res -O coff 
+

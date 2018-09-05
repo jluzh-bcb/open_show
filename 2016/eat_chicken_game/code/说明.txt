@@ -1,0 +1,4 @@
+注意编译环境devc++
+图形库：ege:http://xege.org/
+1.在game文件夹得Rungame.exe是由game_logo项目编译出来的exe改名复制过来的
+2.在game文件编译出来的exe改名.bin,通过Rungame.exe调用
